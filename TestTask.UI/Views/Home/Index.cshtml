@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="eng-EN">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Your Application Name</title>
+    <style>
+            /* Optional CSS styling for better indentation and readability */
+            pre {
+                white-space: pre-wrap;
+                font-family: monospace;
+            }
+    </style>
+</head>
+<body>
+<div>
+    <input type="text" id="inputText"/>
+    <button onclick="redirectToController()">Submit</button>
+    @if (ViewBag.cfg != "somObj")
+    {
+        <div>
+            <label>Configuration:</label>
+            <pre>@ViewBag.cfg</pre>
+        </div>
+    }
+</div>
+</body>
+</html>
+
+<script>
+    function redirectToController() {
+        var inputValue = $("#inputText").val();
+        window.location.href = "@Url.Action("AddConfiguration", "Home")?cfg=" + encodeURIComponent(inputValue);
+    }
+</script>
